@@ -1,12 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:messaging_whatsapp_app/Features/landing/screens/screens.dart';
+import 'package:messaging_whatsapp_app/firebase_options.dart';
 import 'package:messaging_whatsapp_app/responsive/responsice_layour.dart';
 import 'package:messaging_whatsapp_app/screens/mobile_screen.dart';
 import 'package:messaging_whatsapp_app/screens/mobilechatscree.dart';
 import 'package:messaging_whatsapp_app/screens/web_Screen.dart';
 import 'colors.dart';
 
-void main() {
-  runApp(const MyApp());
+void  main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
+ runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -26,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor
       ),
-      home: Responsive_layout (mobileScreen_layout: const mobileScreen(), webScreen_layout: WebScreen()),
+      home: const landing()
     );
   }
 }
