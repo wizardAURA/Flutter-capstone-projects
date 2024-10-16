@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:messaging_whatsapp_app/Auth/screens/login_Screen.dart';
 import 'package:messaging_whatsapp_app/colors.dart';
 import 'package:messaging_whatsapp_app/common/widgets/custom_button.dart';
 
 class landing extends StatelessWidget {
+  static const String id = 'Welcome_screen';
+  void NavigateWelcomeScreen(BuildContext context){
+    Navigator.pushNamed(context, loginScreen.id);
+  }
   const landing({super.key});
 
   @override
@@ -30,7 +35,7 @@ class landing extends StatelessWidget {
 
           Padding(
             padding: const EdgeInsets.all(15.0),
-            child: SizedBox(width: size.width*0.75,child: CustomButton(text: 'AGREE AND CONTINUE', colour:blackColour, onPressed: (){},bcolour: tabColor,)),
+            child: SizedBox(width: size.width*0.75,child: CustomButton(text: 'AGREE AND CONTINUE', colour:blackColour, onPressed: ()=>NavigateWelcomeScreen(context),bcolour: tabColor,)),
           ),
           const SizedBox(height: 20),
         ],

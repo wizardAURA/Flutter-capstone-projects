@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:messaging_whatsapp_app/Auth/screens/login_Screen.dart';
 import 'package:messaging_whatsapp_app/Features/landing/screens/screens.dart';
 import 'package:messaging_whatsapp_app/firebase_options.dart';
 import 'package:messaging_whatsapp_app/responsive/responsice_layour.dart';
+import 'package:messaging_whatsapp_app/router.dart';
 import 'package:messaging_whatsapp_app/screens/mobile_screen.dart';
 import 'package:messaging_whatsapp_app/screens/mobilechatscree.dart';
 import 'package:messaging_whatsapp_app/screens/web_Screen.dart';
@@ -23,16 +25,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {
-        mobileScreen.id: (context) => mobileScreen(),
-        mobilechat.id:(context) => mobilechat(),
-        WebScreen.id :(context) => WebScreen(),
-      },
       debugShowCheckedModeBanner: false,
       title: 'Whatsapp clone',
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: backgroundColor
+        scaffoldBackgroundColor: backgroundColor,
+        appBarTheme: const AppBarTheme(
+          color: appBarColor
+        )
       ),
+      onGenerateRoute: (settings)=> generateRoute(settings),
       home: const landing()
     );
   }
